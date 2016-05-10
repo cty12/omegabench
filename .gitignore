@@ -1,3 +1,5 @@
 *.tar.gz
 install/
+install-php/
 httpd-*/
+php-*/
