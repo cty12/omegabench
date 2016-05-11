@@ -27,6 +27,8 @@
 # text styles
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
+YELLOW=`tput setaf 3`
+BLUE=`tput setaf 4`
 BOLD=`tput bold`
 RESET=`tput sgr 0`
 
@@ -116,5 +118,33 @@ make -j4
 make install
 
 if [ $? -eq 0 ]; then
-    echo "${BOLD}PHP compilation ${GREEN}DONE!! ${RESET} Check the install-php dir. "
+    echo "${BOLD}PHP compilation ${GREEN}DONE!! ${RESET} Check the install-php/ dir. "
 fi
+
+# edit apache-httpd config files
+# change working dir
+cd $APP_DIR/install/conf
+echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
+if [ ! -f httpd.conf.ob.bak ]; then
+    # make backup
+    echo "Backing up ${YELLOW}${BOLD}install/conf/httpd.conf${RESET} to ${BLUE}${BOLD}install/conf/httpd.conf.ob.bak${RESET}"
+    cp httpd.conf httpd.conf.ob.bak
+fi
+# replace the default listening port of the httpd server
+sed -i -e "s/Listen 80/Listen 7000/g" httpd.conf
+echo "Listening port of Apache-httpd changed to: ${BLUE}${BOLD}`egrep "^Listen " httpd.conf`${RESET}"
+# set server name
+echo "# Configuration for Omegabench" >> httpd.conf
+echo "ServerName localhost" >> httpd.conf
+# set server limit
+echo "ServerLimit 1" >> httpd.conf
+# set threads-per-child
+echo "ThreadsPerChild 8" >> httpd.conf
+# end with blank line
+echo "" >> httpd.conf
+echo "${BOLD}Additional Apache-httpd configuration: ${RESET}"
+tail -n 5 httpd.conf
+# set up the test web page (in php)
+cp $APP_DIR/test.php $APP_DIR/install/htdocs
+echo "${BOLD}Files under directory install/htdocs: ${RESET}"
+ls -l $APP_DIR/install/htdocs
