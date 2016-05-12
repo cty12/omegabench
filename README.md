@@ -16,11 +16,11 @@ The Omegabench is the (planned) default benchmarking toolkit for the Tsinghua vi
 
 ## Documentation
 
-[Wiki](wiki/)
+[Wiki](../../wiki)
 
 ## Installing Applications
 
-Please see this [page](wiki/Installing-benchmark-applications-using-scripts).
+Please see this [page](../../wiki/Installing-benchmark-applications-using-scripts).
 
 ## Supported Tests
 
