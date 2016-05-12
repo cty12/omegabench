@@ -40,6 +40,12 @@ PHP_VER="7.0.5"
 # app root dir
 APP_DIR="$OMEGA_HOME/apache-httpd/"
 
+if [ "$OMEGA_HOME" == "" ]; then
+    echo "${BOLD}${YELLOW}\$OMEGA_HOME${RESET}${BOLD} is not defined. Define it in your ${BLUE}.bashrc or .zshrc. ${RESET}"
+    echo "${RED}${BOLD}TERMINATED${RESET}"
+    exit 1
+fi
+
 # change working dir
 cd $APP_DIR
 echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
@@ -133,6 +139,8 @@ fi
 # replace the default listening port of the httpd server
 sed -i -e "s/Listen 80/Listen 7000/g" httpd.conf
 echo "Listening port of Apache-httpd changed to: ${BLUE}${BOLD}`egrep "^Listen " httpd.conf`${RESET}"
+# set handler for .php files
+sed -i "/<IfModule mime_module>/a\ \ \ \ # Handle .php files\n\ \ \ \ AddType application/x-httpd-php .php\n" httpd.conf
 # set server name
 echo "# Configuration for Omegabench" >> httpd.conf
 echo "ServerName localhost" >> httpd.conf
