@@ -25,7 +25,7 @@ Please see this [page](../../wiki/Installing-benchmark-applications-using-script
 ## Supported Tests
 
 1. [Apache httpd](http://httpd.apache.org/).
-2. TBA
+2. [Mongoose](https://www.cesanta.com/products/mongoose).
 
 ## Tianyu's Experiment Setup
 
