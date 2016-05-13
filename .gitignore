@@ -3,3 +3,6 @@ install/
 install-php/
 httpd-*/
 php-*/
+mongoose-*/
+mongoose/mongoose
+mongoose/mg.conf

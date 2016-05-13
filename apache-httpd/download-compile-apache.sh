@@ -2,7 +2,7 @@
 
 #
 # The below script is a fork of the benchmarking script used in the Crane Project (https://github.com/columbia/crane).
-# It is polished and improved and becomes part of our Omegabench Project.
+# It is polished and improved and becomes part of our Omegabench Project (https://github.com/cty12/omegabench).
 # Author: Tianyu Chen
 # Date: May 10, 2016
 # Organization: Tsinghua University
