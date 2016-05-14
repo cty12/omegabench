@@ -32,7 +32,7 @@ BLUE=`tput setaf 4`
 BOLD=`tput bold`
 RESET=`tput sgr 0`
 
-# change $OMEGA_HOME
+# check $OMEGA_HOME
 if [ "$OMEGA_HOME" == "" ]; then
     echo "${BOLD}${YELLOW}\$OMEGA_HOME${RESET}${BOLD} is not defined. Define it in your ${BLUE}.bashrc or .zshrc. ${RESET}"
     echo "${RED}${BOLD}TERMINATED${RESET}"

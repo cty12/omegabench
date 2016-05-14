@@ -1,7 +1,9 @@
 # Mongoose config file.
+#
 # Author: Tianyu Chen
 # Date: May 13, 2016
 # Organization: Tsinghua University
+#
 
 # app root dir
 APP_DIR="$OMEGA_HOME/mongoose/"
