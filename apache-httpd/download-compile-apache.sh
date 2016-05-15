@@ -32,19 +32,15 @@ BLUE=`tput setaf 4`
 BOLD=`tput bold`
 RESET=`tput sgr 0`
 
-# versions
-HTTPD_VER="2.4.20"
-APR_VER="1.5.2"
-APR_UTIL_VER="1.5.4"
-PHP_VER="7.0.5"
-# app root dir
-APP_DIR="$OMEGA_HOME/apache-httpd/"
-
+# check $OMEGA_HOME
 if [ "$OMEGA_HOME" == "" ]; then
     echo "${BOLD}${YELLOW}\$OMEGA_HOME${RESET}${BOLD} is not defined. Define it in your ${BLUE}.bashrc or .zshrc. ${RESET}"
     echo "${RED}${BOLD}TERMINATED${RESET}"
     exit 1
 fi
+
+# source config file
+source $OMEGA_HOME/apache-httpd/config
 
 # change working dir
 cd $APP_DIR

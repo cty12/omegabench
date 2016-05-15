@@ -1,0 +1,15 @@
+# Apache httpd config file
+#
+# Author: Tianyu Chen
+# Date: May 14, 2016
+# Organization: Tsinghua University
+#
+
+# versions
+HTTPD_VER="2.4.20"
+APR_VER="1.5.2"
+APR_UTIL_VER="1.5.4"
+PHP_VER="7.0.5"
+
+# app root dir
+APP_DIR="$OMEGA_HOME/apache-httpd/"
