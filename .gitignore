@@ -1,8 +1,21 @@
+# tar balls
+*.tar
 *.tar.gz
+*.tar.bz2
+*.zip
+# httpd binary installation directory
 install/
+# php installation directory
 install-php/
+# httpd code base
 httpd-*/
+# php code base
 php-*/
+# mongoose code base
 mongoose-*/
+# mongoose binary installation directory
 mongoose/mongoose
+# mongoose configuration file
 mongoose/mg.conf
+# ab tests configuration
+apache-httpd/tests-config.json
