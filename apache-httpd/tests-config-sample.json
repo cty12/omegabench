@@ -1,0 +1,9 @@
+{
+  "ab": "$OMEGA_HOME/apache-httpd/install/bin/ab",
+  "num_req": 128,
+  "concurrency": 8,
+  "port": 7000,
+  "ip_addr": [
+    "127.0.0.1"
+  ]
+}
