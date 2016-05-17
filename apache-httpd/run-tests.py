@@ -13,6 +13,7 @@ import sys
 import subprocess                      # for executing shell commands
 import json                            # for parsing config file
 import re                              # for searching in ab output
+import os
 from pprint import pprint
 from termcolor import cprint, colored  # for termianl colored output
 
@@ -20,7 +21,12 @@ from termcolor import cprint, colored  # for termianl colored output
 cprint("The python version to use is: ", attrs=["bold"])
 print (sys.version)
 
-with open("tests-config.json", 'r') as config_file:
+# get the current directory from which the script runs
+curr_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
+print "current dir: ", curr_dir
+
+# open the configuration that is placed in the same directory
+with open(os.path.join(curr_dir, "tests-config.json"), 'r') as config_file:
     config = json.load(config_file)
 
 tests_result = dict()
