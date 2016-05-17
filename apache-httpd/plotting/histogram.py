@@ -20,7 +20,9 @@ def draw(bench_res):
         plt.figure(fig_idx)
         sample = bench_res[test]
         n_hosts = len(sample)
-        plt.bar(range(len(sample)), sample.values(), align="center")
+        jet = plt.get_cmap("jet")
+        plt.bar(range(len(sample)), sample.values(), align="center",
+                color=jet(np.linspace(0, 1.0, n_hosts)))
         plt.xticks(range(len(sample)), sample.keys(), rotation=25)
         plt.title(test)
         fig_idx += 1

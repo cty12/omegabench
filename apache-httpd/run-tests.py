@@ -73,13 +73,15 @@ for ip_addr in config["ip_addr"]:
         transfer_rate = float(transfer_rate.group(1))
         tests_result["transfer rate"][hostname] = transfer_rate
     else:
-        cprint("Failed with code " + str(rc) + "! Error log dumped. ",
+        cprint("Failed with code " + str(rc) + "!",
                "red", attrs=["bold"])
-        print err
+        if err is not None:
+            print err
+        sys.exit(1)
 
 # print performance report
 pprint(tests_result)
 # draw histogram
-# histogram.draw(tests_result)
+histogram.draw(tests_result)
 # draw pretty table
 table.draw(tests_result)
