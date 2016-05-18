@@ -1,0 +1,16 @@
+# Xz config file.
+#
+# Author: Tianyu Chen
+# Date: May 18, 2016
+# Organization: Tsinghua University
+#
+
+# app root dir
+APP_DIR="$OMEGA_HOME/xz/"
+
+# xz version
+# released on 2015-9-29
+XZ_VER="5.2.2"
+# tar version
+# released on 2016-5-16
+TAR_VER="1.29"
