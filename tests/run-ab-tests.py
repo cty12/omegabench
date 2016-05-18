@@ -2,7 +2,7 @@
 
 #
 # The script is part of the Omegabench Project.
-# Install termcolor as dependency.
+# Requires termcolor, prettytable, matplotlib as dependency.
 #
 # Author: Tianyu Chen
 # Date: May 16, 2016
