@@ -27,7 +27,7 @@ curr_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
 print "current dir: ", curr_dir
 
 # open the configuration that is placed in the same directory
-with open(os.path.join(curr_dir, "tests-config.json"), 'r') as config_file:
+with open(os.path.join(curr_dir, "configs", "ab-tests-config.json"), 'r') as config_file:
     config = json.load(config_file)
 
 # the test results
