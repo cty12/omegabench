@@ -19,5 +19,5 @@ mongoose-*/
 mongoose/mongoose
 # mongoose configuration file
 mongoose/mg.conf
-# ab tests configuration
-apache-httpd/tests-config.json
+# tests configuration
+*-tests-config.json
