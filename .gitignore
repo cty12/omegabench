@@ -1,9 +1,10 @@
 # pyc files
 *.pyc
-# tar balls
+# tar-balls and compressed files
 *.tar
 *.tar.gz
 *.tar.bz2
+*.tar.xz
 *.zip
 # httpd binary installation directory
 install/
@@ -19,5 +20,15 @@ mongoose-*/
 mongoose/mongoose
 # mongoose configuration file
 mongoose/mg.conf
+# xz code base
+xz-*/
+# tar code base
+tar-*/
+# xz installation directory
+install-xz/
+# tar installation directory
+install-tar/
 # tests configuration
 *-tests-config.json
+# temporary files
+tmp/
