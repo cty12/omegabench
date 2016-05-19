@@ -70,6 +70,12 @@ echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
 make -j4
 make install
 
+if [ $? -eq 0 ]; then
+    echo "${BOLD}Xz installation ${GREEN}DONE!!${RESET} Check the install-xz/ directory. "
+else
+    echo "${BOLD}${RED}There might be some problems. ${RESET}"
+fi
+
 # change working dir
 cd "$APP_DIR/tar-$TAR_VER"
 echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
@@ -77,3 +83,9 @@ echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
 ./configure --prefix=$APP_DIR/install-tar
 make -j4
 make install
+
+if [ $? -eq 0 ]; then
+    echo "${BOLD}Tar installation ${GREEN}DONE!!${RESET} Check the install-tar/ directory. "
+else
+    echo "${BOLD}${RED}There might be some problems. ${RESET}"
+fi
