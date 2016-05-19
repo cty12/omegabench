@@ -16,16 +16,15 @@ The Omegabench is the (planned) default benchmarking toolkit for the Tsinghua vi
 
 ## Documentation
 
+Please see our Wiki for installation instructions.
+
 [Wiki](../../wiki)
-
-## Installing Applications
-
-Please see this [page](../../wiki/Installing-benchmark-applications-using-scripts).
 
 ## Supported Tests
 
 1. [Apache httpd](http://httpd.apache.org/).
 2. [Mongoose](https://www.cesanta.com/products/mongoose).
+3. [Xz](http://tukaani.org/xz/) & [Tar](https://www.gnu.org/software/tar/).
 
 ## Tianyu's Experiment Setup
 
