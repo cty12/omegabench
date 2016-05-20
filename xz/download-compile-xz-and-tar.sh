@@ -42,6 +42,7 @@ echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
 rm -rf tar-$TAR_VER/
 rm -rf xz-$XZ_VER/
 # remove binary directories
+rm -rf install-tar/
 rm -rf install-xz/
 
 # download tar code base
