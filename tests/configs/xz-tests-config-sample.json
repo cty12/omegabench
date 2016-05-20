@@ -1,0 +1,6 @@
+{
+  "tar": "$OMEGA_HOME/xz/install-tar/bin/tar",
+  "unxz": "$OMEGA_HOME/xz/install-xz/bin/unxz",
+  "test_file_url": "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.6.tar.xz",
+  "xz-threads": 0
+}
