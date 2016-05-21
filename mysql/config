@@ -1,0 +1,14 @@
+# Mysql config file
+#
+# Author: Tianyu Chen
+# Date: May 20, 2016
+# Organization: Tsinghua University
+#
+
+# app root dir
+APP_DIR="$OMEGA_HOME/mysql"
+
+# mysql version
+MYSQL_VER="5.1.73"
+# sysbench version
+SYSBENCH_VER="0.5"

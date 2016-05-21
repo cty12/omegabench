@@ -28,6 +28,10 @@ tar-*/
 install-xz/
 # tar installation directory
 install-tar/
+# mysql code base
+mysql-*/
+# mysql installation directory
+install-mysql/
 # tests configuration
 *-tests-config.json
 # temporary files
