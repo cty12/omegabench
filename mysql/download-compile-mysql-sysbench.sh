@@ -3,6 +3,7 @@
 #
 # The below script is a fork of the benchmarking script used in the Crane Project (https://github.com/columbia/crane).
 # It is polished and improved and becomes part of our Omegabench Project (https://github.com/cty12/omegabench).
+# Requires unzip, libtool as dependency.
 # Author: Tianyu Chen
 # Date: May 20, 2016
 # Organization: Tsinghua University
@@ -51,6 +52,8 @@ echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
 rm -rf mysql-$MYSQL_VER/
 # remove binary directories
 rm -rf install-mysql/
+# remove previous mysql settings
+rm -f my.cnf
 
 # download mysql code base from mirror
 # we use Shu-Te University mirror here
@@ -88,3 +91,60 @@ if [ $? -eq 0 ]; then
 else
     echo "${BOLD}${RED}There might be some problems. ${RESET}"
 fi
+
+# change working dir
+cd "$APP_DIR"
+echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
+
+# cleanup previous sysbench installation
+rm -rf sysbench-$SYSBENCH_VER/
+rm -rf install-sysbench
+
+# for debug
+echo "${BOLD}SYSBENCH version${RESET} = $SYSBENCH_VER"
+
+# download source code tarball
+# use the GitHub mirror
+if [ ! -f $SYSBENCH_VER.zip ]; then
+    wget https://github.com/akopytov/sysbench/archive/$SYSBENCH_VER.zip
+    # check whether the download is successful
+    if [ $? -eq 0 ]; then
+        echo "${GREEN}${BOLD}Download completed! ${RESET}"
+    else
+        echo "${RED}${BOLD}ownload failed with exit code $?! ${RESET}"
+        exit 1
+    fi
+fi
+
+# unzip the source code
+echo "${BOLD}Unzipping the source... ${RESET}"
+unzip -q $SYSBENCH_VER.zip
+if [ $? -eq 0 ]; then
+    echo "${GREEN}${BOLD}Unzipped successfully! ${RESET}"
+else
+    echo "${RED}${BOLD}Unzipping failed! ${RESET}"
+    exit 2
+fi
+
+# change working directory
+cd "$APP_DIR/sysbench-$SYSBENCH_VER"
+echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
+
+# configure & build
+./autogen.sh
+./configure \
+        --prefix=$APP_DIR/install-sysbench \
+        --with-mysql-includes=$APP_DIR/install-mysql/include/mysql \
+        --with-mysql-libs=$APP_DIR/install-mysql/lib/mysql
+make && make install
+# binary installed to install-mysql/
+
+# whether the installation is successfully
+if [ $? -eq 0 ]; then
+    echo "${BOLD}SYSBENCH installation ${GREEN}DONE!!${RESET} Check the install-sysbench/ directory. "
+else
+    echo "${BOLD}${RED}There might be some problems. ${RESET}"
+fi
+
+# generate the mysql test configuration
+# sed -e "s/3306/7000/g" install-mysql/share/mysql/my-large.cnf > my.cnf
