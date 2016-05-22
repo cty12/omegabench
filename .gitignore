@@ -32,6 +32,12 @@ install-tar/
 mysql-*/
 # mysql installation directory
 install-mysql/
+# mysql configuration file
+mysql/my.cnf
+# sysbench code base
+sysbench-*/
+# sysbench installation directory
+install-sysbench/
 # tests configuration
 *-tests-config.json
 # temporary files
