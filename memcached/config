@@ -1,0 +1,9 @@
+# Apache httpd config file
+#
+# Author: Tianyu Chen
+# Date: May 23, 2016
+# Organization: Tsinghua University
+#
+
+# memcached version
+MEMCACHED_VER="1.4.25"

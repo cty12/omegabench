@@ -6,6 +6,8 @@
 *.tar.bz2
 *.tar.xz
 *.zip
+# checksum
+*.sha1
 # httpd binary installation directory
 install/
 # php installation directory
