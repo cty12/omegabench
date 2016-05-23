@@ -155,5 +155,5 @@ sed -e "s/3306/$PORT/g" install-mysql/share/mysql/my-large.cnf > my.cnf
 # initialize the database
 ./install-mysql/bin/mysql_install_db --defaults-file=./my.cnf
 
-# now the mysql database is ready to run
-# use sysbench to benchmark the performance of mysql
+# it's not yet ready!!
+# run prepare-sysbench.sh to generate the database used for benchmark
