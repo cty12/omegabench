@@ -151,7 +151,7 @@ cd "$APP_DIR"
 echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
 
 # generate the mysql test configuration
-sed -e "s/3306/7000/g" install-mysql/share/mysql/my-large.cnf > my.cnf
+sed -e "s/3306/$PORT/g" install-mysql/share/mysql/my-large.cnf > my.cnf
 # initialize the database
 ./install-mysql/bin/mysql_install_db --defaults-file=./my.cnf
 

@@ -12,3 +12,12 @@ APP_DIR="$OMEGA_HOME/mysql"
 MYSQL_VER="5.1.73"
 # sysbench version
 SYSBENCH_VER="0.5"
+
+# the sysbench test table size
+TABLE_SIZE=100000
+# the mysql user for benchmark
+USER="root"
+# the benchmark database
+DATABASE="sysbench_db"
+# port
+PORT=7000
