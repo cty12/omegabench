@@ -1,4 +1,4 @@
-#/usr/bin/bash
+#!/usr/bin/bash
 
 #
 # The below script is a fork of the benchmarking script used in the Crane Project (https://github.com/columbia/crane).
