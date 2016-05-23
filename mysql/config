@@ -14,7 +14,7 @@ MYSQL_VER="5.1.73"
 SYSBENCH_VER="0.5"
 
 # the sysbench test table size
-TABLE_SIZE=100000
+TABLE_SIZE=1000000
 # the mysql user for benchmark
 USER="root"
 # the benchmark database

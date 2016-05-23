@@ -4,7 +4,7 @@
     "port": 7000,
     "threads": 8,
     "max_req": 100,
-    "table_size": 100000,
+    "table_size": 1000000,
     "database": "sysbench_db",
     "index_update": 200,
     "non_index_update": 200,
