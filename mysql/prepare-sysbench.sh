@@ -53,6 +53,10 @@ else
     echo "${GREEN}${BOLD}Mysql server is running with pid `pgrep mysqld`${RESET}"
 fi
 
+# dealing with privileges so the database can be accessed from other hosts
+install-mysql/bin/mysql -u root -e 'GRANT ALL PRIVILEGES ON *.* TO "root"@"%";'
+install-mysql/bin/mysql -u root -e 'FLUSH PRIVILEGES;'
+
 # drop previous test database
 install-mysql/bin/mysql -u $USER -e "drop database $DATABASE;"
 if [ $? -eq 0 ]; then
