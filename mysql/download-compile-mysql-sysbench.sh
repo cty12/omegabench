@@ -3,7 +3,7 @@
 #
 # The below script is a fork of the benchmarking script used in the Crane Project (https://github.com/columbia/crane).
 # It is polished and improved and becomes part of our Omegabench Project (https://github.com/cty12/omegabench).
-# Requires unzip, libtool as dependency.
+# Requires unzip, libtool, gcc-g++, ncurses-devel as dependency.
 # Author: Tianyu Chen
 # Date: May 20, 2016
 # Organization: Tsinghua University
@@ -90,6 +90,7 @@ if [ $? -eq 0 ]; then
     echo "${BOLD}Mysql installation ${GREEN}DONE!!${RESET} Check the install-mysql/ directory. "
 else
     echo "${BOLD}${RED}There might be some problems. ${RESET}"
+    exit 3
 fi
 
 # change working dir
@@ -144,6 +145,7 @@ if [ $? -eq 0 ]; then
     echo "${BOLD}SYSBENCH installation ${GREEN}DONE!!${RESET} Check the install-sysbench/ directory. "
 else
     echo "${BOLD}${RED}There might be some problems. ${RESET}"
+    exit 3
 fi
 
 # change working directory
