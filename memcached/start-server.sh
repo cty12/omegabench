@@ -37,7 +37,7 @@ sleep 1
 
 # start memcached
 echo "${YELLOW}${BOLD}(Re)starting memcached... ${RESET}"
-./memcached -p 11222 -P $APP_DIR/install-memcached/memcached.pid &
+./memcached -p $PORT -P $APP_DIR/install-memcached/memcached.pid &
 
 # sleep for a while...
 sleep 0.5

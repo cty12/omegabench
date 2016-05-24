@@ -12,3 +12,6 @@ APP_DIR="$OMEGA_HOME/memcached"
 MEMCACHED_VER="1.4.25"
 # libmemcached version
 LIBMEMCACHED_VER="1.0.18"
+
+# the port that the server runs on
+PORT=11222
