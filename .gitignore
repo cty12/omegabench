@@ -8,6 +8,7 @@
 *.zip
 # checksum
 *.sha1
+*.md5
 # httpd binary installation directory
 install/
 # php installation directory
@@ -44,6 +45,10 @@ install-sysbench/
 memcached-*/
 # memcached installation directory
 install-memcached/
+# libmemcached code base
+libmemcached-*/
+# libmemcached installation directory
+install-libmemcached/
 # tests configuration
 *-tests-config.json
 # temporary files
