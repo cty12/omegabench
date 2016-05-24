@@ -1,0 +1,9 @@
+{
+    "benchmark": "$OMEGA_HOME/memcached/install-libmemcached/bin/memslap",
+    "port": 11222,
+    "concurrency": 10,
+    "exec_num": 10000,
+    "ip_addr": [
+        "127.0.0.1"
+    ]
+}
