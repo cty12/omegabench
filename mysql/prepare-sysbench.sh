@@ -5,6 +5,8 @@
 # It does some preparation jobs and deploys the mysql server
 # before running the sysbench benchmark.
 #
+# Requires killall as dependency.
+#
 # Author: Tianyu Chen
 # Date: May 23, 2016
 # Organization: Tsinghua University

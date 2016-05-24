@@ -2,6 +2,7 @@
 
 #
 # The script starts the memcached as service.
+# Requires killall as dependency.
 #
 # Author: Tianyu Chen
 # Date: May 24, 2016
