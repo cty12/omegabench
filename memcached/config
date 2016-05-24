@@ -5,5 +5,8 @@
 # Organization: Tsinghua University
 #
 
+# app root dir
+APP_DIR="$OMEGA_HOME/memcached"
+
 # memcached version
 MEMCACHED_VER="1.4.25"

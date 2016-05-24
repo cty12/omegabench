@@ -3,6 +3,7 @@
 #
 # The below script is a fork of the benchmarking script used in the Crane Project (https://github.com/columbia/crane).
 # It is polished and improved and becomes part of our Omegabench Project (https://github.com/cty12/omegabench).
+# Requires libevent-devel as dependency.
 #
 # Author: Tianyu Chen
 # Date: May 23, 2016
@@ -47,7 +48,9 @@ source $OMEGA_HOME/memcached/config
 cd "$APP_DIR"
 echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
 
-# TODO cleanup previous builds
+# cleanup previous builds
+rm -rf memcached-$MEMCACHED_VER/
+rm -rf install-memcached/
 
 # download memcached code base
 # for debug
@@ -71,4 +74,30 @@ if [ ! -f memcached-$MEMCACHED_VER.tar.gz ]; then
         echo "${RED}${BOLD}Download failed with return code $?! ${RESET}"
         exit 1
     fi
+fi
+
+# untar the source code
+echo "${BOLD}Untarring the source code... ${RESET}"
+tar -xf memcached-$MEMCACHED_VER.tar.gz
+if [ $? -eq 0 ]; then
+    echo "${GREEN}${BOLD}Untarred successfully! ${RESET}"
+else
+    echo "${RED}${BOLD}Untarred failed! ${RESET}"
+    exit 2
+fi
+
+# change working dir
+cd "$APP_DIR/memcached-$MEMCACHED_VER"
+echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
+# configure & build
+./configure --prefix=$APP_DIR/install-memcached
+make && make install
+# binary installed to install-memcached/
+
+# whether the installation is successful
+if [ $? -eq 0 ]; then
+    echo "${BOLD}Memcached installation ${GREEN}DONE!!${RESET} Check the install-memcached/ directory. "
+else
+    echo "${BOLD}${RED}There might be some problems. ${RESET}"
+    exit 3
 fi

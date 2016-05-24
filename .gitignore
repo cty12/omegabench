@@ -40,6 +40,10 @@ mysql/my.cnf
 sysbench-*/
 # sysbench installation directory
 install-sysbench/
+# memcached code base
+memcached-*/
+# memcached installation directory
+install-memcached/
 # tests configuration
 *-tests-config.json
 # temporary files
