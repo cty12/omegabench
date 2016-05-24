@@ -59,10 +59,11 @@ echo "${BOLD}Memcached version${RESET} = $MEMCACHED_VER"
 # download source code tarball
 if [ ! -f memcached-$MEMCACHED_VER.tar.gz ]; then
     wget "http://www.memcached.org/files/memcached-$MEMCACHED_VER.tar.gz"
+    RET=$?
     rm -f memcached-$MEMCACHED_VER.tar.gz.sha1
     wget "http://www.memcached.org/files/memcached-$MEMCACHED_VER.tar.gz.sha1"
     # check whether the download is successfully
-    if [ $? -eq 0 ]; then
+    if [[ $RET -eq 0 && $? -eq 0 ]]; then
         echo "${GREEN}Download completed! ${RESET}"
         if [ "`sha1sum ./memcached-$MEMCACHED_VER.tar.gz`" == "`cat ./memcached-$MEMCACHED_VER.tar.gz.sha1`" ]; then
             echo "${GREEN}${BOLD}SHA1-sum checked! ${RESET}"
@@ -71,7 +72,7 @@ if [ ! -f memcached-$MEMCACHED_VER.tar.gz ]; then
             exit 1
         fi
     else
-        echo "${RED}${BOLD}Download failed with return code $?! ${RESET}"
+        echo "${RED}${BOLD}Download failed with return code $RET! ${RESET}"
         exit 1
     fi
 fi
@@ -101,3 +102,69 @@ else
     echo "${BOLD}${RED}There might be some problems. ${RESET}"
     exit 3
 fi
+
+# change working dir
+cd "$APP_DIR"
+echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
+
+# cleanup previous libmemcached builds
+rm -rf libmemcached-$LIBMEMCACHED_VER.tar.gz/
+rm -rf install-libmemcached/
+
+# for debug
+echo "${BOLD}Libmemcached version${RESET} = $LIBMEMCACHED_VER"
+echo "${BOLD}Libmemcached family${RESET} = ${LIBMEMCACHED_VER%.*}"
+
+# download the source code tarball
+if [ ! -f libmemcached-$LIBMEMCACHED_VER.tar.gz ]; then
+    echo "${BOLD}Downloading libmemcached source tarball... ${RESET}"
+    # download the file
+    wget "https://launchpad.net/libmemcached/${LIBMEMCACHED_VER%.*}/$LIBMEMCACHED_VER/+download/libmemcached-$LIBMEMCACHED_VER.tar.gz"
+    RET=$?
+    # download the checksum
+    rm -f libmemcached-$LIBMEMCACHED_VER.tar.gz.md5
+    wget -O libmemcached-$LIBMEMCACHED_VER.tar.gz.md5 "https://launchpad.net/libmemcached/${LIBMEMCACHED_VER%.*}/$LIBMEMCACHED_VER/+download/libmemcached-$LIBMEMCACHED_VER.tar.gz/+md5"
+    # check whether the download is successfully
+    if [[ $RET -eq 0 && $? -eq 0 ]]; then
+        echo "${GREEN}Download completed! ${RESET}"
+        SUM=`md5sum libmemcached-$LIBMEMCACHED_VER.tar.gz | awk '{print $1;}'`
+        SUM_REFER=`cat libmemcached-$LIBMEMCACHED_VER.tar.gz.md5 | head -n1 | awk '{print $1;}'`
+        if [ "$SUM" == "$SUM_REFER" ]; then
+            echo "${GREEN}${BOLD}MD5-sum checked! ${RESET}"
+        else
+            echo "${RED}${BOLD}MD5-sum check failed! ${RESET}"
+            exit 1
+        fi
+    else
+        echo "${RED}${BOLD}Download failed with return code $RET! ${RESET}"
+        exit 1
+    fi
+fi
+
+# untar the source code
+echo "${BOLD}Untarring the libmemcached source code... ${RESET}"
+tar -xf libmemcached-$LIBMEMCACHED_VER.tar.gz
+if [ $? -eq 0 ]; then
+    echo "${GREEN}${BOLD}Untarred successfully! ${RESET}"
+else
+    echo "${RED}${BOLD}Untarred failed! ${RESET}"
+    exit 2
+fi
+
+# change working dir
+cd "$APP_DIR/libmemcached-$LIBMEMCACHED_VER"
+echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
+# configure & build
+./configure --prefix=$APP_DIR/install-libmemcached
+make && make install
+# binary installed to install-libmemcached/
+
+# whether the installation is successful
+if [ $? -eq 0 ]; then
+    echo "${BOLD}Libmemcached installation ${GREEN}DONE!!${RESET} Check the install-libmemcached/ directory. "
+else
+    echo "${BOLD}${RED}There might be some problems. ${RESET}"
+    exit 3
+fi
+
+# you're all set!

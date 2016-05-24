@@ -10,3 +10,5 @@ APP_DIR="$OMEGA_HOME/memcached"
 
 # memcached version
 MEMCACHED_VER="1.4.25"
+# libmemcached version
+LIBMEMCACHED_VER="1.0.18"
