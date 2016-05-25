@@ -96,4 +96,11 @@ fi
 # you might run make test here. this is optional but it's a good idea.
 # make test
 
+# generate config file
+cd "$APP_DIR/install-redis"
+echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
+echo "daemonize yes" >> redis.conf
+echo "pidfile $APP_DIR/install-redis/redis.pid" >> redis.conf
+echo "port 6679" >> redis.conf
+
 # you're set and ready to go
