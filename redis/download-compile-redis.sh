@@ -81,3 +81,19 @@ fi
 # change working dir
 cd "$APP_DIR/redis-$REDIS_VER"
 echo "${BOLD}Working dir changed to ${GREEN}`pwd`${RESET}"
+# configure & build
+make
+make install PREFIX=$APP_DIR/install-redis
+
+# whether installation is successfully
+if [ $? -eq 0 ]; then
+    echo "${BOLD}Redis installation ${GREEN}DONE!!${RESET} Check the install-redis/ directory. "
+else
+    echo "${RED}${BOLD}There might be some problems. ${RESET}"
+    exit 3
+fi
+
+# you might run make test here. this is optional but it's a good idea.
+# make test
+
+# you're set and ready to go
