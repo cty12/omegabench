@@ -40,7 +40,7 @@ sleep 1
 
 # bring up the server
 echo "${YELLOW}${BOLD}(Re)starting redis server... ${RESET}"
-./redis-server $APP_DIR/install-redis/redis.conf
+./redis-server $APP_DIR/install-redis/redis.conf --protected-mode no
 
 # sleep for a while...
 sleep 0.5
