@@ -49,6 +49,10 @@ install-memcached/
 libmemcached-*/
 # libmemcached installation directory
 install-libmemcached/
+# redis code base
+redis-*/
+# redis installation directory
+install-redis/
 # tests configuration
 *-tests-config.json
 # temporary files

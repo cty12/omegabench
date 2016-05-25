@@ -1,0 +1,12 @@
+# Redis config file
+
+#
+# Author: Tianyu Chen
+# Date: May 25, 2016
+# Organization: Tsinghua University
+
+# app root dir
+APP_DIR="$OMEGA_HOME/redis"
+
+# redis version
+REDIS_VER="3.2.0"
