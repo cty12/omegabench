@@ -1,0 +1,9 @@
+{
+    "benchmark": "$OMEGA_HOME/redis/install-redis/bin/redis-benchmark",
+    "port": 6679,
+    "concurrency": 20,
+    "num_req": 100000,
+    "ip_addr": [
+        "127.0.0.1"
+    ]
+}
